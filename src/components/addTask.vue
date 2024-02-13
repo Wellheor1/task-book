@@ -1,11 +1,11 @@
 <template>
-  <div class="add-root" ref="add">
-    <Textarea v-model="value" autoResize rows="3" cols="30" ref="textarea" class="add-input" placeholder="Введите название задачи" />
+  <div class="add-root">
+    <Textarea v-model="titleTask" autoResize rows="3" cols="30" ref="textarea" class="add-input" placeholder="Введите название задачи" />
     <div class="buttons">
       <button class="transparent-button" @click="emit('close')">
         <i class="times fa fa-times"></i>
       </button>
-      <button class="transparent-button" @click="emit('add', { value })">
+      <button class="transparent-button" @click="addItem">
         <i class="check fa fa-check"></i>
       </button>
   </div>
@@ -16,12 +16,22 @@
 import {ref, onMounted } from 'vue'
 import Textarea from "primevue/textarea";
 
+const props = defineProps({
+  keyTask: {
+    type: String,
+    required: true
+  }
+})
+
 const emit = defineEmits(['close', 'add'])
 
 
-const value = ref('')
+const titleTask = ref('')
 const textarea = ref(null);
-const add = ref(null);
+const addItem = () => {
+  emit('add', { titleTask: titleTask.value, keyTask: props.keyTask})
+  titleTask.value = ''
+}
 
 onMounted(() => {
   textarea.value.$el.focus()

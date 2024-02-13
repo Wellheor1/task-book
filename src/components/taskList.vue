@@ -23,7 +23,7 @@
               <i class="fa fa-plus"></i> Добавить
             </button>
           </div>
-          <add-task v-else @close="addAgreements = false" @add="addAgreements" />
+          <add-task v-else key-task="agreement" @close="showAddInput(null, false)" @add="addItem" />
         </template>
       </draggable>
     </div>
@@ -49,7 +49,7 @@
               <i class="fa fa-plus"></i> Добавить
             </button>
           </div>
-          <add-task v-else />
+          <add-task v-else key-task="new" @close="showAddInput(null, false)" @add="addItem" />
         </template>
       </draggable>
     </div>
@@ -75,7 +75,7 @@
               <i class="fa fa-plus"></i> Добавить
             </button>
           </div>
-          <add-task v-else />
+          <add-task v-else key-task="process" @close="showAddInput(null, false)" @add="addItem" />
         </template>
       </draggable>
     </div>
@@ -101,7 +101,7 @@
               <i class="fa fa-plus"></i> Добавить
             </button>
           </div>
-          <add-task v-else />
+          <add-task v-else key-task="done" @close="showAddInput(null, false)" @add="addItem" />
         </template>
       </draggable>
     </div>
@@ -127,7 +127,7 @@
               <i class="fa fa-plus"></i> Добавить
             </button>
           </div>
-          <add-task v-else />
+          <add-task v-else key-task="fix" @close="showAddInput(null, false)" @add="addItem" />
         </template>
       </draggable>
     </div>
@@ -192,15 +192,23 @@ const showAddTask = ref({
   fix: false
 })
 
-const showAddInput = (keyTitle) => {
-  for (let key in showAddTask.value) {
-    showAddTask.value[key] = key === keyTitle;
+const showAddInput = (keyTitle=null, add=true) => {
+  console.log(keyTitle)
+  console.log(add)
+  if (add) {
+    for (let key in showAddTask.value) {
+      showAddTask.value[key] = key === keyTitle;
+    }
+  } else {
+    for (let key in showAddTask.value) {
+      showAddTask.value[key] = false
+    }
   }
 }
 
-const addAgreements = ({ value }) => {
-  taskAgreements.value.push(
-      { id: taskAgreements.value.length + 1, name: value}
+const addItem = ({ titleTask, keyTask }) => {
+  tasks.value[keyTask].push(
+      { id: tasks.value[keyTask].length + 1, name: titleTask}
   )
 }
 
@@ -267,8 +275,11 @@ const addAgreements = ({ value }) => {
   border: 1px solid #C4CAD4;
   border-radius: 4px;
   margin: 5px 5px;
-  //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  //transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.task:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  z-index: 1;
+  transform: scale(1.008);
 }
 .task-row {
   display: flex;

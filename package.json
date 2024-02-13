@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -20,3 +20,4 @@
     "vite": "^5.1.0"
   }
 }
+
