@@ -2,11 +2,11 @@
   <div class="add-root">
     <Textarea v-model="titleTask" autoResize rows="3" cols="30" ref="textarea" class="add-input" placeholder="Введите название задачи" />
     <div class="buttons">
-      <button class="transparent-button" @click="emit('close')">
-        <i class="times fa fa-times"></i>
+      <button class="transparent-button times" @click="emit('close')">
+        <i class="fa fa-times"></i>
       </button>
-      <button class="transparent-button" @click="addItem">
-        <i class="check fa fa-check"></i>
+      <button class="transparent-button check" @click="addItem">
+        <i class="fa fa-check"></i>
       </button>
   </div>
 </div>
@@ -29,8 +29,10 @@ const emit = defineEmits(['close', 'add'])
 const titleTask = ref('')
 const textarea = ref(null);
 const addItem = () => {
-  emit('add', { titleTask: titleTask.value, keyTask: props.keyTask})
+  if (titleTask.value) {
+    emit('add', { titleTask: titleTask.value, keyTask: props.keyTask})
   titleTask.value = ''
+  }
 }
 
 onMounted(() => {
