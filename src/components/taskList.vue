@@ -289,7 +289,7 @@ const addItem = ({ titleTask, keyTask }) => {
   flex-grow: 1;
   margin: 3px;
   color: #1C2530;
-  white-space: normal;
+  word-break: break-all;
 }
 .transparent-button {
   background-color: transparent;
