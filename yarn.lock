@@ -449,6 +449,11 @@ postcss@^8.4.33, postcss@^8.4.35:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+primevue@^3.48.1:
+  version "3.48.1"
+  resolved "https://registry.yarnpkg.com/primevue/-/primevue-3.48.1.tgz#f7c5d449d233668f15cb0ffaa38ad40bdeca1034"
+  integrity sha512-lyJ+E0ZCv2pR9jIpdPLBysU8zB2hOKrN7q78orloWelPx05zSYoMVKAWaqKTHNpunD52xffjaqovt1y6B/9XoQ==
+
 readdirp@~3.6.0:
   version "3.6.0"
   resolved "https://registry.npmjs.org/readdirp/-/readdirp-3.6.0.tgz"
