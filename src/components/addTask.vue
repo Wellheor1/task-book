@@ -16,23 +16,18 @@
 import {ref, onMounted } from 'vue'
 import Textarea from "primevue/textarea";
 
-const props = defineProps({
-  keyTask: {
-    type: String,
-    required: true
-  }
-})
-
-const emit = defineEmits(['close', 'add'])
+const emit = defineEmits(['close', 'addItem'])
 
 
 const titleTask = ref('')
 const textarea = ref(null);
 const addItem = () => {
+  console.log('отработа ло1')
   if (titleTask.value) {
-    emit('add', { titleTask: titleTask.value, keyTask: props.keyTask})
-  titleTask.value = ''
+    emit('addItem', { titleTask: titleTask.value })
+    titleTask.value = ''
   }
+  console.log('отработа ло2')
 }
 
 onMounted(() => {
