@@ -12,7 +12,7 @@
 </div>
 </template>
 <script setup>
-import {reactive, ref} from "vue";
+import { reactive } from "vue";
 import TaskCol from "./taskCol.vue";
 
 const tasksGroups = reactive([
@@ -78,108 +78,5 @@ const add = ({ titleTask, rowIdx }) => {
   position: relative;
   height: 100%;
   gap: 10px;
-}
-.col {
-  border: 1px solid #E3E5E8;
-  background-color: #E3E5E8;
-  border-radius: 8px;
-}
-.header-block {
-  &-agreement,
-  &-new,
-  &-process,
-  &-done,
-  &-fix {
-    border-radius: 8px 8px 0 0;
-    padding: 5px 5px;
-  }
-  &-agreement {
-    background-color: #FF65DD;
-  }
-  &-new {
-    background-color: #33A0FF;
-  }
-  &-process {
-    background-color: #FFC633;
-  }
-  &-done {
-    background-color: #22C33D;
-  }
-  &-fix {
-    background-color: #F53D5C;
-  }
-}
-.header-text {
-  margin: 0;
-  color: #1C2530;
-  text-align: center;
-}
-.task-list {
-  position: relative;
-  height: 596px;
-  border: 1px solid #E3E5E8;
-  border-radius: 0 0 8px 8px;
-  background-color: #E3E5E8;
-}
-.task {
-  background-color: #FFFFFF;
-  border: 1px solid #C4CAD4;
-  border-radius: 4px;
-  margin: 5px 5px;
-}
-.task:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  z-index: 1;
-  transform: scale(1.008);
-}
-.task-row {
-  display: flex;
-  padding: 8px 0 8px 8px;
-}
-.task-title {
-  flex-grow: 1;
-  margin: 3px;
-  color: #1C2530;
-  word-break: break-all;
-}
-.transparent-button {
-  background-color: transparent;
-  align-self: start;
-  flex: 0;
-  color: #434A54;
-  border: none;
-  border-radius: 4px;
-  padding: 3px 2px;
-  margin: 0 1px;
-}
-.transparent-button:hover {
-  background-color: #434a54;
-  color: #FFFFFF;
-}
-.transparent-button:active {
-  background-color: #37BC9B;
-  color: #FFFFFF;
-}
-.transparent-button-add {
-  background-color: transparent;
-  align-self: start;
-  flex: 0;
-  color: #3D86F4;
-  border: none;
-  border-radius: 4px;
-  padding: 3px 2px;
-  margin: 0 5px
-}
-.transparent-button-add:hover {
-  background-color: #434a54;
-  color: #FFFFFF;
-}
-.transparent-button-add:active {
-  background-color: #37BC9B;
-  color: #FFFFFF;
-}
-.max-height {
-  height: 568px;
-  overflow: auto;
 }
 </style>
