@@ -4,7 +4,7 @@
       <h4 class="header-text">{{ props.tasks.title }}</h4>
     </div>
     <draggable v-model="props.tasks.items" :group="{ name: `${props.tasks.status}`, pull: true, put: true }"
-                 @change="showAllert" item-key="id" class="max-height">
+                 @add="showAllert" item-key="id" class="max-height">
       <template #item="{element}">
         <div class="task">
           <div class="task-row">
@@ -31,6 +31,7 @@
 import { ref } from "vue";
 import draggable from 'vuedraggable'
 import AddTask from "./addTask.vue";
+import {useToast} from "primevue/usetoast";
 
 const props = defineProps({
   tasks: {
@@ -44,10 +45,9 @@ const props = defineProps({
 })
 const emit = defineEmits(['add'])
 
-const showAllert = ({added}) => {
-  if (added) {
-    alert(`Задача перемещена в ${props.tasks.title}`)
-  }
+const toast = useToast()
+const showAllert = () => {
+  toast.add({ severity: 'success', summary: 'Перемещение', detail: `Задача перемещена в ${props.tasks.title}`, life: 3000 })
 }
 
 const showAddTask = ref(false);

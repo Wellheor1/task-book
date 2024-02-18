@@ -1,6 +1,7 @@
 <template>
   <div>
     <main-layout></main-layout>
+    <Toast position="bottom-right" />
   </div>
 </template>
 
